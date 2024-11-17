@@ -1,25 +1,24 @@
 package testng;
 
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
-public class TestNGExampleTest3 {
+public class TestNGExampleTest3 extends BaseTest {
 
     @Test (retryAnalyzer = Retry.class)
-    public void dependsOn() {
-        throw new NullPointerException();
+    public void initializationTest() {
+        System.out.println("Initialization completed successfully.");
+        assert true;
     }
 
-    @Test
-    public void anotherMethod() {
-        throw new NullPointerException();
+    @Test(dependsOnMethods = {"initializationTest"})
+    public void dependentTest() {
+        System.out.println("Executing dependent test after initialization.");
+        assert true;
     }
 
-    @Test(alwaysRun = true, dependsOnMethods = {"dependsOn", "anotherMethod"}, priority = 2)
-    public void test1() {
-        try {
-            Thread.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    @Test(expectedExceptions = ArithmeticException.class, invocationCount = 4, threadPoolSize = 2)
+    public void testDivisionByZero() {
+        System.out.println("Testing division by zero.");
+        int result = 10 / 0;
     }
 }

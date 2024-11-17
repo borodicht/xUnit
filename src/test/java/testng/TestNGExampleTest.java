@@ -3,8 +3,8 @@ package testng;
 import org.testng.annotations.*;
 
 public class TestNGExampleTest {
-    
-    @BeforeClass (groups = {"Писал Юра", "slow"})
+
+    @BeforeClass(groups = {"Писал Юра", "slow"})
     public void beforeClass() {
         System.out.println("Before class");
         try {
@@ -13,8 +13,8 @@ public class TestNGExampleTest {
             e.printStackTrace();
         }
     }
-    
-    @BeforeTest (groups = {"Писал Юра", "slow"})
+
+    @BeforeTest(groups = {"Писал Юра", "slow"})
     public void beforeTest() {
         System.out.println("Before Test");
         try {
@@ -23,8 +23,8 @@ public class TestNGExampleTest {
             e.printStackTrace();
         }
     }
-    
-    @BeforeMethod (groups = {"Писал Юра", "slow"})
+
+    @BeforeMethod(groups = {"Писал Юра", "slow"})
     public void beforeMethod() {
         System.out.println("Before Method");
         try {
@@ -47,17 +47,18 @@ public class TestNGExampleTest {
     @Parameters({"email", "password"})
     @Test(groups = {"slow"})
     public void test4(@Optional("1")
-                                  String p1,
+                          String p1,
                       @Optional("string")
-                              String p2) {
+                          String p2) {
         System.out.println(p1 + " " + p2);
     }
 
-    @Test(dataProvider="asd")
+    @Test(dataProvider = "asd")
     public void test5(String email, String password, boolean validLogin) {
-        System.out.println("Instance DataProvider Example: Data(" + email + ", " + password + " " + validLogin +")");
+        System.out.println("Instance DataProvider Example: Data(" + email + ", " + password + " " + validLogin + ")");
 
     }
+
     @DataProvider
     public Object[][] asd() {
         return new Object[][]{

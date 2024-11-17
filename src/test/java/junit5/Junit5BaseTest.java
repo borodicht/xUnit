@@ -1,21 +1,15 @@
-package junit;
+package junit5;
 
-import org.junit.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
-public class JunitBaseTest {
-    
-    @BeforeClass
+public class Junit5BaseTest {
+
+    @BeforeAll
     public static void t1() {
-        System.out.println("Before class Base");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-    @Before
-    public void t2() {
-        System.out.println("Before test Base");
+        System.out.println("Before all Base Test");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -23,9 +17,19 @@ public class JunitBaseTest {
         }
     }
 
-    @After
+    @AfterAll
+    public static void t2() {
+        System.out.println("After all Base Test");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @BeforeEach
     public void t3() {
-        System.out.println("After test Base");
+        System.out.println("Before each test Base Test");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -33,9 +37,9 @@ public class JunitBaseTest {
         }
     }
 
-    @AfterClass
-    public static void t4() {
-        System.out.println("After class Base");
+    @AfterEach
+    public void t4() {
+        System.out.println("After each test Base Test");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
