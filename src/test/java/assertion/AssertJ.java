@@ -1,4 +1,4 @@
-package testng;
+package assertion;
 
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
