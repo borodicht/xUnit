@@ -1,12 +1,14 @@
 package junit5;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@ExtendWith(CustomTestWatcher.class)
 public class Junit5ExampleTest {
 
     @BeforeAll
